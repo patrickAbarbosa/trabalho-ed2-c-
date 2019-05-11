@@ -10,4 +10,7 @@ add_executable(trabalho_ed2_cplusplus main.cpp
         src/Class/Heapsort.cpp src/Header/Heapsort.h
         src/Class/MergeSort.cpp src/Header/MergeSort.h
         src/Class/Rating.cpp src/Header/Rating.h
-        src/Class/utils.cpp src/Header/utils.h)
+        src/Class/utils.cpp src/Header/utils.h
+        src/Class/Data.cpp src/Header/Data.h
+        src/Header/NoData.h)
+

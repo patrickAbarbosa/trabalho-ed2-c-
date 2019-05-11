@@ -9,11 +9,16 @@
  */
 
 #include <iostream>
+#include "src/Header/utils.h"
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-  cout << "Oi" << endl;
+  cout << "Olá Mundo" << endl;
+  int tamanho = 11;
+  int filmes[11] = {1, 5, 7, 8, 4, 3, 5, 7, 3, 2, 1};
+
+  printArray(filmes, tamanho);
   return 0;
 }
