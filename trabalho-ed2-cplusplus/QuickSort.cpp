@@ -1,4 +1,5 @@
 #include "QuickSort.h"
+#include "Rating.h"
 #include <iostream>
 
 using namespace std;
@@ -41,4 +42,10 @@ void QuickSort::swap(int* left, int* right){
     right = left;
     left = aux;
 
+}
+
+void QuickSort:: vetorizaObjeto(Rating rating[], int n){
+    for(int i = 0; i < n; i++){
+        this->vetorIDObjeto[i] = rating[i]->getUserID();
+    }
 }
