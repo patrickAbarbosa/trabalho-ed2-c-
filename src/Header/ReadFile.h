@@ -2,21 +2,23 @@
 #define READFILE_H_INCLUDED
 
 #include <iostream>
+#include <fstream> 
 
 using namespace std;
 
-class readFile
+class ReadFile
 {
   public:
-    readFile();
-    readFile(string diretory);
-    ~readFile();
+    ReadFile();
+    ReadFile(string diretory);
+    ~ReadFile();
 
-    void setFileDiretory(string diretory);
+    bool setFileDiretory(string diretory);
     void read();
 
   private:
     int sizeReadFile;
     string *fileIn;
+    ifstream file;
 };
 #endif // READFILE_H_INCLUDED
