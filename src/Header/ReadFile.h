@@ -14,7 +14,7 @@ class ReadFile
     ~ReadFile();
 
     bool setFileDiretory(string diretory);
-    void read();
+    void read(int nVal);
 
   private:
     int sizeReadFile;
