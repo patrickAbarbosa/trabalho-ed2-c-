@@ -15,6 +15,7 @@ class ReadFile
 
     bool setFileDiretory(string diretory);
     void read(int nVal);
+    int* readUserId(int nVal);
 
   private:
     int sizeReadFile;

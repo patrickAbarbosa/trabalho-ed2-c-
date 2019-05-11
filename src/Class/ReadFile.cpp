@@ -61,3 +61,33 @@ void ReadFile::read(int nVal)
     cout << info << endl;
   }
 }
+
+int* ReadFile::readUserId(int nVal)
+{
+  if (!file.is_open())
+  {
+    cout << "Nenhuma arquivo a ser lido. :(" << endl;
+    return;
+  }
+  
+  int *vet = new int[nVal];
+  srand(time(NULL));
+
+  int fileSize = file.tellg();
+
+  for (int i = 0; i < nVal;)
+  {
+    int bit = rand() % (fileSize);
+    file.seekg(bit);
+    string lixo;
+    getline(file, lixo);
+    int id;
+    file >> id;
+    if(id != 0)
+    {
+      vet[i] = id;
+      i++;
+    }
+  }
+  return vet;
+}
