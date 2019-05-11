@@ -15,7 +15,7 @@ ReadFile::ReadFile()
 
 ReadFile::ReadFile(string diretory)
 {
-  if (!setFileDiretory)
+  if (!setFileDiretory(diretory))
     cout << "[read file] Diretorio invalido" << endl;
 }
 
