@@ -35,13 +35,9 @@ int QuickSort::partition(int v[], int low, int high){
 }
 
 void QuickSort::swap(int* left, int* right){
+    int aux;
 
-    int* aux;
-
-    aux = right;
-    right = left;
-    left = aux;
-
+    aux = *right;
+    *right = *left;
+    *left = aux;
 }
-
-]
