@@ -44,8 +44,3 @@ void QuickSort::swap(int* left, int* right){
 
 }
 
-void QuickSort:: vetorizaObjeto(Rating rating[], int n){
-    for(int i = 0; i < n; i++){
-        this->vetorIDObjeto[i] = rating[i]->getUserID();
-    }
-}
