@@ -15,8 +15,10 @@ ReadFile::ReadFile()
 
 ReadFile::ReadFile(string diretory)
 {
+  cout << "OI";
   if (!setFileDiretory(diretory))
     cout << "[read file] Diretorio invalido" << endl;
+
 }
 
 ReadFile::~ReadFile()
@@ -27,11 +29,12 @@ ReadFile::~ReadFile()
 
 bool ReadFile::setFileDiretory(string diretory)
 {
-  file.open(diretory, std::ios::binary | std::ios::ate);
+  file.open(diretory, ios::binary | ios::ate);
 
   if (file.is_open())
   {
     sizeReadFile = 0;
+    fileIn = new string;
     *fileIn = diretory;
 
     return true;
@@ -63,22 +66,19 @@ void ReadFile::read(int nVal)
 }
 
 int* ReadFile::readUserId(int nVal)
-{
+{ 
   if (!file.is_open())
   {
     cout << "Nenhuma arquivo a ser lido. :(" << endl;
-    return;
+    return NULL;
   }
   
   int *vet = new int[nVal];
   srand(time(NULL));
 
-  int fileSize = file.tellg();
-
   for (int i = 0; i < nVal;)
   {
-    int bit = rand() % (fileSize);
-    file.seekg(bit);
+    file.seekg(rand() % file.tellg());
     string lixo;
     getline(file, lixo);
     int id;

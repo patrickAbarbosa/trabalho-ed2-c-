@@ -48,11 +48,11 @@ void menu()
 int main(int argc, char *argv[])
 {
   cout << "Estrutura de dados II - parte 1" << endl;
-
+  
   switch (argc)
   {
   case 1:
-    cout << "arquivo de entrada" << endl;
+    
     break;
   case 2:
     cout << "arquivo de saida" << endl;
