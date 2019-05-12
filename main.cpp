@@ -1,8 +1,8 @@
 /*
  * Data Struct II
  * 
- * Local: Federal Univercity of Juiz de Fora
- * Authors: Igor Phelype, Miriam Queiroz, Patrick Barbosa and Pedro Reis
+ * Local: Federal University of Juiz de Fora
+ * Authors: Igor Phelype, Mirian Queiroz, Patrick Barbosa and Pedro Reis
  * Course: Science Computer
  * 
  * Licence: GNU

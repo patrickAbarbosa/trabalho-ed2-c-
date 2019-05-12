@@ -9,7 +9,7 @@ void InsertionSort::sort(int v[], int n){
 
     for(i = 1; i <= n; i++){
 
-        for(j = i - 1; j > 0 && v[j - 1] > vet[j]; j--){
+        for(j = i - 1; j > 0 && v[j - 1] > v[j]; j--){
             swap(v[j], v[j-1]);
             copies++;
         }

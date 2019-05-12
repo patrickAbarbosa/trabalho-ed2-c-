@@ -16,7 +16,6 @@ void QuickSort::sort(int v[], int low, int high){
 }
 
 int QuickSort::partition(int v[], int low, int high){
-
     int pivot = v[high];
     int i = low - 1;
     for(int j = low; j <= high-1; j++){
