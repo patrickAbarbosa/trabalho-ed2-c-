@@ -24,11 +24,11 @@ int QuickSort::partition(int v[], int low, int high){
 
         if(v[j] <= pivot){
             i++;
-            this->swap(&v[i], &v[j]);
+            this->swap(v[i], v[j]);
         }
 
     }
-    swap(&v[i+1], &v[high]);
+    swap(v[i+1], v[high]);
 
     return(i+1);
 

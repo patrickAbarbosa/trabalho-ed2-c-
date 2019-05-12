@@ -9,7 +9,6 @@ class QuickSort {
     private:
 
         bool swaped = false;
-        int vetorIDObjeto[];
 
     public: 
 
