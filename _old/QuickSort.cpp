@@ -1,4 +1,5 @@
 #include "QuickSort.h"
+#include "Rating.h"
 #include <iostream>
 
 using namespace std;
@@ -42,3 +43,4 @@ void QuickSort::swap(int* left, int* right){
     left = aux;
 
 }
+

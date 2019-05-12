@@ -5,7 +5,7 @@
  *  dos dados de uma API de avaliações de filmes.
  *
  *  Equipe de desenvolvimento:
- *  Igor Phelipe, Mirian Mara,Patrick Barbosa, Pedro Reis
+ *  Igor Phelype, Mirian Mara,Patrick Barbosa, Pedro Reis
  *  Local: Universidade Federal de Juiz de Fora
  */
 #include <iostream>
