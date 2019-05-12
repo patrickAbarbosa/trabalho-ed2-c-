@@ -11,8 +11,70 @@
 #include <iostream>
 #include "src/Header/utils.h"
 #include "src/Header/ReadFile.h"
+#include "src/Header/Rating.h"
+#include "src/Header/Data.h"
+#include "src/Header/QuickSort.h"
+#include "src/Header/Heapsort.h"
 
 using namespace std;
+
+void involuntario()
+{
+  cout << "Rodar todos cenarios. Ps: nao implementado." <<endl;
+}
+
+void cenario1(Data *db, ReadFile *read, int size)
+{
+  cout << "-- Cenario 1" << endl;
+  int *vet = read->readUserId(size);
+
+  cout << "Tempo de leitura de user ID: " << endl;
+
+  delete [] vet;
+}
+
+void cenario2(Data *db, ReadFile *read, int size)
+{
+  cout << "-- Cenario 2" << endl;
+  int *vet = read->readUserId(size);
+
+  cout << "Tempo de leitura de user ID: " << endl;
+
+  delete [] vet;
+}
+
+void cenario3(Data *db, ReadFile *read, int size)
+{
+  cout << "-- Cenario 3" << endl;
+  int *vet = read->readUserId(size);
+
+  cout << "Tempo de leitura de user ID: " << endl;
+
+  cout << "Vetor com user ID: ";
+  for(int i = 0; i < size; i++)
+    cout << vet[i] << ", ";
+  cout << endl;
+  
+  heapSort(vet, size);
+  
+  cout << "Sort: ";
+  for(int i = 0; i < size; i++)
+    cout << vet[i] << ", ";
+  cout << endl;
+  delete [] vet;
+}
+void menuSelecionado(char c)
+{
+  switch (c)
+  {
+  case '0':
+    
+    break;
+  
+  default:
+    break;
+  }
+}
 
 void menu()
 {
@@ -49,6 +111,17 @@ int main(int argc, char *argv[])
 {
   cout << "Estrutura de dados II - parte 1" << endl;
   
+  Data *db;
+  db = new Data();
+  ReadFile a("ratings.csv");
+
+  cenario3(db, &a, 550);
+  return 0;
+  Rating *b = a.readUMRT(10);
+
+  for(int i = 0; i< 10; i++)
+    b[i].print();
+  return 0;
   switch (argc)
   {
   case 1:
