@@ -1,8 +1,8 @@
 /*
  * Data Struct II
  * 
- * Local: Federal Univercity of Juiz de Fora
- * Authors: Igor Phelype, Miriam Queiroz, Patrick Barbosa and Pedro Reis
+ * Local: Federal University of Juiz de Fora
+ * Authors: Igor Phelype, Mirian Queiroz, Patrick Barbosa and Pedro Reis
  * Course: Science Computer
  * 
  * Licence: GNU
@@ -18,6 +18,7 @@
 
 using namespace std;
 
+<<<<<<< HEAD
 void involuntario()
 {
   cout << "Rodar todos cenarios. Ps: nao implementado." <<endl;
@@ -75,38 +76,42 @@ void menuSelecionado(char c)
     break;
   }
 }
+=======
+void CenarioUm();
+>>>>>>> 8138ee6fc9314d34feaa82f4ff2a5b6cfd9f0fce
 
 void menu()
 {
-  char menu;
-  while(1)
-  {
-    cout << "#-- \t MENU \t--#" << endl;
-    cout << "[0] - Passar por todos cenarios automaticamente." << endl;
-    cout << "[1] - Processar cenario 1" << endl;
-    cout << "[2] - Processar cenario 2" << endl;
-    cout << "[3] - Processar cenario 3" << endl;
-    cout << "[4] - Processar cenario 4" << endl;
-    cout << "[5] - Processar parte 2"   << endl;
-    cout << "[6] - Gerar relatorio"     << endl;
-    cout << "[q] - Sair"                << endl;
-    cin >> menu;
+	char menu;
+	while(1)
+	{
+		cout << "#-- \t MENU \t--#" << endl;
+		cout << "[0] - Passar por todos cenarios automaticamente." << endl;
+		cout << "[1] - Processar cenario 1" << endl;
+		cout << "[2] - Processar cenario 2" << endl;
+		cout << "[3] - Processar cenario 3" << endl;
+		cout << "[4] - Processar cenario 4" << endl;
+		cout << "[5] - Processar parte 2"   << endl;
+		cout << "[6] - Gerar relatorio"     << endl;
+		cout << "[q] - Sair"                << endl;
+		cin >> menu;
 
-    do
-    {
-      cout << "Digite uma opcao do menu: ";
-      cin >> menu;
-    } while ((menu < '0' || menu > '9') && menu != 'q');
+		do
+		{
+			cout << "Digite uma opcao do menu: ";
+			cin >> menu;
+		} while ((menu < '0' || menu > '9') && menu != 'q');
 
-    if (menu == 'q')
-    {
-      cout << "Saindo..." << endl;
-      cout << "Bye" << endl;
-      return;
-    }
-  }
+		if (menu == 'q')
+		{
+			cout << "Saindo..." << endl;
+			cout << "Bye" << endl;
+			return;
+		}
+	}
 }
 
+<<<<<<< HEAD
 int main(int argc, char *argv[])
 {
   cout << "Estrutura de dados II - parte 1" << endl;
@@ -137,7 +142,25 @@ int main(int argc, char *argv[])
 
   int tamanho = 11;
   int filmes[11] = {1, 5, 7, 8, 4, 3, 5, 7, 3, 2, 1};
+=======
+int main(int argc, char *argv[]){
+	cout << "Estrutura de dados II - parte 1" << endl;
+	switch (argc){
+	case 1:
+		break;
+	case 2:
+		cout << "arquivo de saida" << endl;
+		break;
+	default:
+		break;
+	}
+	return 0;
+}
+>>>>>>> 8138ee6fc9314d34feaa82f4ff2a5b6cfd9f0fce
 
-  printArray(filmes, tamanho);
-  return 0;
+void CenarioUm(){
+	int tamanho = 11;
+	int filmes[11] = {1, 5, 7, 8, 4, 3, 5, 7, 3, 2, 1};
+	
+	printArray(filmes, tamanho);
 }
