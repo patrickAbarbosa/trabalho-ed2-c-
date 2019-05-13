@@ -130,6 +130,7 @@ Rating* ReadFile::readUMRT(int nVal)
     
     if(userId != 0)
     {
+//TODO: PODE-SE USAR: vet[i] = Rating(userId, movieId, rating, timestamp);
       vet[i].USERID = userId;
       vet[i].MOVIEID = movieId;
       vet[i].RATING = rating;
