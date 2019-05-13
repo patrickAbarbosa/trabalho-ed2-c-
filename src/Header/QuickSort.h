@@ -11,6 +11,7 @@ class QuickSort {
 
     public:
         Analysis sort(int v[], int size);
+        Analysis sortRatings(Rating vr[], int size);
         void sortRatings(Rating vr[], int low, int high);
         int partitionRatings(Rating vr[], int low, int high);
         void sort(int v[], int low, int high); //Params: vetor de elementos, menor valor do vetor e maior valor (indice)
