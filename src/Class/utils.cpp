@@ -4,12 +4,22 @@
 
 #include <iostream>
 #include "../Header/utils.h"
+#include "../Header/Rating.h"
 
 using namespace std;
 
 void printArray(int *A, int size){
     int i;
+    cout << "[ ";
     for (i=0; i < size; i++)
-        printf("%d ", A[i]);
-    printf("\n");
+        cout << A[i] << " ";
+    cout << "]" << endl;
+}
+
+void printRatingArray(Rating *A, int size){
+    int i;
+    cout << "[" << endl;
+    for (i=0; i < size; i++)
+        A[i].print();
+    cout << endl << "]" << endl;
 }
