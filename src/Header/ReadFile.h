@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <fstream> 
-
+#include "Rating.h"
 using namespace std;
 
 class ReadFile
@@ -15,7 +15,11 @@ class ReadFile
 
     bool setFileDiretory(string diretory);
     void read(int nVal);
-    int* readUserId(int nVal);
+    //Cenario 1
+    int* readUserId(int nVal); // Lê e retorna um vetor com n USER_ID aleatórios
+    Rating* readUMRT(int nVal); // Lê e retorna um vetor com n Rating (USERID, MOVIEID, RATING, TIMESTAMP) aleatórios
+    
+
 
   private:
     int sizeReadFile;

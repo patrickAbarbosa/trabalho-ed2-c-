@@ -4,7 +4,7 @@
 #include <fstream> // read
 #include <sstream> // String com get line
 #include <ctime>   // usado para randomizar a leitura e calcular o tempo total
-
+#include "../Header/Rating.h"
 using namespace std;
 
 ReadFile::ReadFile()
@@ -86,6 +86,55 @@ int* ReadFile::readUserId(int nVal)
     if(id != 0)
     {
       vet[i] = id;
+      i++;
+    }
+  }
+  return vet;
+}
+
+Rating* ReadFile::readUMRT(int nVal)
+{
+  if (!file.is_open())
+  {
+    cout << "Nenhuma arquivo a ser lido. :(" << endl;
+    return NULL;
+  }
+  
+  Rating *vet = new Rating[nVal];
+  srand(time(NULL));
+
+  for (int i = 0; i < nVal;)
+  {
+    file.seekg(rand() % file.tellg());
+    string lixo, line;
+    getline(file, lixo);   
+    getline(file, line);
+
+    stringstream ss(line);
+    
+    getline(ss, line, ',');
+    int userId;
+    userId = atoi(line.c_str());
+
+    getline(ss, line, ',');
+    int movieId;
+    movieId = atoi(line.c_str());
+
+    getline(ss, line, ',');
+    float rating;
+    rating = atoi(line.c_str());
+    
+    getline(ss, line);
+    int timestamp;
+    timestamp = atoi(line.c_str());  
+    
+    if(userId != 0)
+    {
+//TODO: PODE-SE USAR: vet[i] = Rating(userId, movieId, rating, timestamp);
+      vet[i].USERID = userId;
+      vet[i].MOVIEID = movieId;
+      vet[i].RATING = rating;
+      vet[i].TIMESTAMP = timestamp;
       i++;
     }
   }

@@ -14,6 +14,7 @@ public:
     int TIMESTAMP;
 
     Rating(int USERID, int MOVIEID, float RATING, int TIMESTAMP);
+    Rating(){};
     void print();
 };
 
