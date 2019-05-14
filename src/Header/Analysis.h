@@ -6,6 +6,7 @@
 #define TRABALHO_ED2_CPLUSPLUS_ANALYSIS_H
 
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -23,9 +24,14 @@ public:
         cout << "\tTempo gasto: " << this->tempoGasto << endl;
         cout << "}" << endl;
     }
+    string toString(){
+        ostringstream s;
+        s << "Analysis{ nComparacoes: " << nComparacoes << ", nCopias" << this->nCopias << ", tempoGasto" << tempoGasto << " }";
+        return s.str();
+    }
     int nComparacoes;
     int nCopias;
-    int tempoGasto;
+    float tempoGasto;
 };
 
 
