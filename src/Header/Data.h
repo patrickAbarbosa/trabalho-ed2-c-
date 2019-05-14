@@ -2,7 +2,7 @@
 #define DATA_H_INCLUDED
 
 #include <iostream>
-#include "./NoData.h"
+#include "NoData.h"
 
 using namespace std;
 
