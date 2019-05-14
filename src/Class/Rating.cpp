@@ -8,12 +8,12 @@
 using namespace std;
 
 void Rating::print() {
-    cout << "Rating{" << endl;
-    cout << "\tUSERID: " << this->USERID << endl;
-    cout << "\tUSERID: " << this->MOVIEID << endl;
-    cout << "\tRATING\u200B: " << this->RATING << endl;
-    cout << "\tTIMESTAMP: " << this->TIMESTAMP << endl;
-    cout << "}" << endl;
+    cout << "\tRating{" << endl;
+    cout << "\t\tUSERID: " << this->USERID << endl;
+    cout << "\t\tMOVIEID: " << this->MOVIEID << endl;
+    cout << "\t\tRATING\u200B: " << this->RATING << endl;
+    cout << "\t\tTIMESTAMP: " << this->TIMESTAMP << endl;
+    cout << "\t}" << endl;
 }
 
 Rating::Rating(int USERID, int MOVIEID, float RATING, int TIMESTAMP){
