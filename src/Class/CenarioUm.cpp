@@ -16,6 +16,7 @@
  */
 void CenarioUm::exec(Data *db, ReadFile* read, int* sizes){
     for(int i = 0; i < 6; i++) {
+        cout << endl << endl << "--- " << "TESTE " << i+1 << " ---" << endl << "tamanho: " << ;
         int size = sizes[i];
         int *vet = read->readUserId(size);
         Rating *vet1 = read->readUMRT(size);
