@@ -1,4 +1,5 @@
 #include <iostream>
+#include "time.h"
 #include "../Header/QuickSort.h"
 #include "../Header/Rating.h"
 #include "../Header/Analysis.h"
@@ -7,12 +8,29 @@ using namespace std;
 
 Analysis an;
 
+/**
+ *
+ * @param v
+ * @param size
+ * @return
+ */
 Analysis QuickSort::sort(int v[], int size){
     an = Analysis();
+    clock_t start, end;
+    start = clock();
     this->sort(v, 0, size-1);
+    end = clock();
+    float tempoGasto = ((float)end - start)/CLOCKS_PER_SEC; // Tempo gasto em segundos
+    an.tempoGasto = tempoGasto*1000; // tempo gasto em milisegundos
     return an;
 }
 
+/**
+ *
+ * @param vr
+ * @param size
+ * @return
+ */
 Analysis QuickSort::sortRatings(Rating vr[], int size){
     an = Analysis();
     this->sortRatings(vr, 0, size-1);
@@ -41,10 +59,10 @@ int QuickSort::partition(int v[], int low, int high){
         if(v[j] <= pivot){
             an.nComparacoes++;
             i++;
-            swap(v[i], v[j]);
+            swap(&v[i], &v[j]);
         }
     }
-    swap(v[i+1], v[high]);
+    swap(&v[i+1], &v[high]);
     return(i+1);
 }
 
@@ -71,12 +89,39 @@ int QuickSort::partitionRatings(Rating vr[], int low, int high){
         if(vr[j].USERID <= pivot.USERID){
             an.nComparacoes++;
             i++;
-            swap(vr[i], vr[j]);
+            swap(&vr[i], &vr[j]);
         }
 
     }
-    swap(vr[i+1], vr[high]);
+    swap(&vr[i+1], &vr[high]);
 
     return(i+1);
 
+}
+
+/**
+ *
+ * @param left
+ * @param right
+ */
+void QuickSort::swap(int* left, int* right){
+    int aux;
+
+    aux = *right;
+    *right = *left;
+    *left = aux;
+}
+
+/**
+ *
+ * @param left
+ * @param right
+ */
+void QuickSort::swap(Rating* left, Rating* right){
+    Rating aux;
+
+    aux = *right;
+    *right = *left;
+    *left = aux;
+    an.nCopias += 3;
 }
