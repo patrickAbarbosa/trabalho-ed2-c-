@@ -39,7 +39,7 @@ void Data::add(string descricao, string val)
       aux->setProx(p);
   }
 }
-
+/*
 NoData* Data::getK(int k)
 {
   NoData *p = primeiro;
@@ -65,6 +65,22 @@ NoData* Data::getK(int k)
     }
     
     delete p;
+  }
+  else
+    cout << "Nenhum dado armazenado."<< endl;
+  return NULL;
+}
+*/
+
+
+NoData* Data::getK(int k)
+{
+  NoData *p = primeiro;
+  if(p)
+  {
+    for(int i = 0; i != k && p !=NULL; i++)
+      p = p->getProx();
+    return p;
   }
   else
     cout << "Nenhum dado armazenado."<< endl;
