@@ -10,7 +10,7 @@
 
 class CenarioUm {
     public:
-        static void exec(Data *db, ReadFile* read, int size);
+        static void exec(Data *db, ReadFile* read, int* sizes);
 };
 
 

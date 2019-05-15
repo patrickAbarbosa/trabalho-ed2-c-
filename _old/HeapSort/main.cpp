@@ -55,7 +55,7 @@ void heapSort(int vetor[], int n)
 
 int main()
 {
-    int vetor[5] = {7,4,8,3,1};
+    int vetor[5] = {4, 8, 1, 0, -1};
     heapSort(vetor, 5);
 
     return 0;
