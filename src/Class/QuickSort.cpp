@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include "time.h"
 #include "../Header/QuickSort.h"
 #include "../Header/Rating.h"
@@ -14,6 +15,55 @@ Analysis an;
  * @param size
  * @return
  */
+
+
+Analysis QuickSort::sortMediana(int v[], int low, int high, int k){
+    if(low < high){
+        int rightPos = partitionMediana(v, low, high, retornaMediana(low, high, k));
+        sortMediana(v, low, rightPos - 1, k);
+        sortMediana(v, rightPos + 1, high, k);
+    }
+}
+
+int QuickSort::retornaMediana(int low, int high, int k){
+    int random[k];
+
+    for(int i = 0; i < k; i++){
+        random[i] = (rand() % high) + low;
+    }
+    this->sort(random, 0, k);
+
+    if(k % 2 == 0){
+        return random[(k/2) - 1];
+    }else {
+        int a = k - 1;
+        int oddIndex = (((a / 2) + 1) + ((a / 2) - 1)) / 2;
+
+        return random[oddIndex];
+    }
+}
+
+
+int QuickSort::partitionMediana(int v[], int low, int high, int mediana){
+    int randomPivot = 0;
+    int pivot = v[randomPivot];
+
+    int i = 0;
+
+    for(int j = low; j < high; j++){
+        if(v[j] < pivot) {
+            i++;
+            this->swap(&v[i], &v[j]);
+        }
+    }
+
+    this->swap(&v[i + 1], &v[high]);
+
+    return i + 1;
+
+}
+
+
 Analysis QuickSort::sort(int v[], int size){
     an = Analysis();
     clock_t start, end;
