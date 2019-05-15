@@ -114,7 +114,7 @@ int main(int argc, char *argv[])
   Data *db;
   db = new Data();
   ReadFile a("ratings.csv");
-
+  
   cenario3(db, &a, 550);
   return 0;
   Rating *b = a.readUMRT(10);

@@ -25,5 +25,7 @@ class ReadFile
     int sizeReadFile;
     string *fileIn;
     ifstream file;
+
+    int auxRead(int max, int probabilidade);
 };
 #endif // READFILE_H_INCLUDED

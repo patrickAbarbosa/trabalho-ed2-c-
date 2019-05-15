@@ -1,9 +1,10 @@
 #include "../Header/ReadFile.h"
-
+#include <ctime>
 #include <iostream>
 #include <fstream> // read
 #include <sstream> // String com get line
 #include <ctime>   // usado para randomizar a leitura e calcular o tempo total
+#include <cmath>
 #include "../Header/Rating.h"
 using namespace std;
 
@@ -49,12 +50,12 @@ void ReadFile::read(int nVal)
     cout << "Nenhuma arquivo a ser lido. :(" << endl;
     return;
   }
-  srand(time(NULL));
-
+  
   int fileSize = file.tellg();
 
   for (int i = 0; i < nVal; i++)
-  {
+  { 
+    srand(i);
     int bit = rand() % (fileSize);
     file.seekg(bit);
     string lixo;
@@ -63,6 +64,16 @@ void ReadFile::read(int nVal)
     file >> info;
     cout << info << endl;
   }
+}
+
+int ReadFile::auxRead(int max, int probabilidade)
+{
+    srand(time(NULL) * probabilidade);
+    int rands =  (rand()%file.tellg());
+    
+    if(rands<500)
+      rands = rands * 1000000;
+    return rands;
 }
 
 int* ReadFile::readUserId(int nVal)
@@ -74,20 +85,24 @@ int* ReadFile::readUserId(int nVal)
   }
   
   int *vet = new int[nVal];
-  srand(time(NULL));
-
-  for (int i = 0; i < nVal;)
+  
+  int max = file.tellg();
+  int probabilidade = nVal + 1;
+  
+  for (int i = 0; i < nVal; )
   {
-    file.seekg(rand() % file.tellg());
+
+    file.seekg(auxRead(max,  probabilidade));
     string lixo;
     getline(file, lixo);
-    int id;
+    int id;    
     file >> id;
     if(id != 0)
     {
       vet[i] = id;
       i++;
     }
+    probabilidade = rand()%max;
   }
   return vet;
 }
@@ -101,11 +116,15 @@ Rating* ReadFile::readUMRT(int nVal)
   }
   
   Rating *vet = new Rating[nVal];
-  srand(time(NULL));
-
-  for (int i = 0; i < nVal;)
+  
+  int max = file.tellg();
+  int probabilidade = nVal + 1;
+  
+  for (int i = 0; i < nVal; )
   {
-    file.seekg(rand() % file.tellg());
+
+    file.seekg(auxRead(max,  probabilidade));
+  
     string lixo, line;
     getline(file, lixo);   
     getline(file, line);
@@ -137,6 +156,7 @@ Rating* ReadFile::readUMRT(int nVal)
       vet[i].TIMESTAMP = timestamp;
       i++;
     }
+    probabilidade = rand()%max;
   }
   return vet;
 }
