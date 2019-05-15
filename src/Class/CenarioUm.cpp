@@ -2,11 +2,11 @@
 // Created by igorphelype on 12/05/19.
 //
 
-#include "src/Header/CenarioUm.h"
-#include "src/Header/Data.h"
-#include "src/Header/ReadFile.h"
-#include "src/Header/utils.h"
-#include "src/Header/QuickSort.h"
+#include "../Header/CenarioUm.h"
+#include "../Header/Data.h"
+#include "../Header/ReadFile.h"
+#include "../Header/utils.h"
+#include "../Header/QuickSort.h"
 
 /**
  *
