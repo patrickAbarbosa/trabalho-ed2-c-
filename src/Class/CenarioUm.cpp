@@ -7,6 +7,7 @@
 #include "../Header/ReadFile.h"
 #include "../Header/utils.h"
 #include "../Header/QuickSort.h"
+#include <fstream>
 
 /**
  * Como utilizar: CenarioUm::exec(new Data(), new ReadFile("ratings.csv"));
@@ -14,39 +15,55 @@
  * @param read
  * @param N
  */
-void CenarioUm::exec(Data *db, ReadFile* read){
-    int vetorN[6] = {1000,5000, 10000,50000,100000,500000};
+void CenarioUm::exec(Data *db, ReadFile* read, int vetorN[]){
+    ofstream file;
+
+    file.open("saida.txt", ios::binary | ios::ate);
+
+    // cenario,numero_comparacoes,numero_copias,tempo_gasto,n,tipo_vetor
+    file << "cenario,numero_comparacoes,numero_copias,tempo_gasto,n,tipo_vetor" << endl;
     for(int i = 0; i < 6; i++) {
+        Analysis anMediaInt = Analysis(), anMediaRating = Analysis();
+        int N = vetorN[i];
+        cout << endl << endl << endl << "--- " << "N = " << N << endl;
         for(int j = 0; j < 5; j++) {
-            int N = vetorN[i];
-            cout << endl << endl << endl << "--- " << "Cenário 1 (";
-            cout << j+1 << "/5)" << " --- " << "N = " << N
-                 << endl;
-            int *vet = read->readUserId(N);
-            Rating *vet1 = read->readUMRT(N);
+            int *vetInt = read->readUserId(N);
+            Rating *vetRating = read->readUMRT(N);
             QuickSort q = QuickSort();
-            Analysis analiseVetorInt, analiseVetorRating;
 
-            //        cout << endl << "-- Cenario 1 --" << endl;
-            //        cout << "-- Vetor de USERIDs --" << endl;
-            //        printArray(vet, N);
-            //        cout << "-- Vetor de Rating --" << endl;
-            //        printRatingArray(vet1, N);
+            Analysis
+                analiseVetorInt = q.sort(vetInt, N),
+                analiseVetorRating = q.sortRatings(vetRating, N);
 
-            analiseVetorInt = q.sort(vet, N);
-            analiseVetorRating = q.sortRatings(vet1, N);
+            // Somatorio das analises do vetor de inteiros
+            anMediaInt.nComparacoes += analiseVetorInt.nComparacoes;
+            anMediaInt.nCopias += analiseVetorInt.nCopias;
+            anMediaInt.tempoGasto += analiseVetorInt.tempoGasto;
 
-            //    cout << "-- Vetor de USERID (Ordenado) --" << endl;
-            //    printArray(vet, N);
-            //    cout << "-- Vetor de Rating (Ordenado)--" << endl;
-            //    printRatingArray(vet1, N);
-            cout << "Estatística vetor de USERID" << endl;
-            cout << analiseVetorInt.toString();
-            cout << endl;
-            cout << "Estatística vetor de Rating" << endl;
-            analiseVetorRating.toString();
-            delete[] vet;
-            delete[] vet1;
+            // Somatorio das analises do vetor de Ratings
+            anMediaRating.nComparacoes += analiseVetorRating.nComparacoes;
+            anMediaRating.nCopias += analiseVetorRating.nCopias;
+            anMediaRating.tempoGasto += analiseVetorRating.tempoGasto;
+
+            delete[] vetInt;
+            delete[] vetRating;
         }
+
+        // Somatorio das analises do vetor de inteiros
+        anMediaInt.nComparacoes /= 5;
+        anMediaInt.nCopias /= 5;
+        anMediaInt.tempoGasto /= 5;
+
+        // Somatorio das analises do vetor de Ratings
+        anMediaRating.nComparacoes /= 5;
+        anMediaRating.nCopias /= 5;
+        anMediaRating.tempoGasto /= 5;
+
+        cout << anMediaInt.toString() << endl;
+        cout << anMediaRating.toString() << endl;
+
+        file << "cenario1" << "," << anMediaInt.nComparacoes << "," << anMediaInt.nCopias << "," << anMediaInt.tempoGasto << "," << N << "," << "INT" << "," << endl;
+        file << "cenario1" << "," << anMediaRating.nComparacoes << "," << anMediaRating.nCopias << "," << anMediaRating.tempoGasto << "," << N << "," << "RATING" << "," << endl;
     }
+    file.close();
 };

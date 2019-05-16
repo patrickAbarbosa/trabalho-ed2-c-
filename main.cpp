@@ -130,6 +130,10 @@ int main(int argc, char *argv[])
     cout << " " << v[i];
   }
 
+  // Cenário 1 sendo executado
+  // int vetorN[6] = {1000,5000, 10000,50000,100000,500000};
+  // CenarioUm::exec(new Data(), new ReadFile("ratings.csv"), vetorN);
+
   /*Data *db;
   db = new Data();
   ReadFile a("ratings.csv");
@@ -137,9 +141,6 @@ int main(int argc, char *argv[])
   cenario3(db, &a, 550);
   return 0;
   Rating *b = a.readUMRT(10);
-
-  // Cenário 1 sendo executado
-  CenarioUm::exec(new Data(), new ReadFile("ratings.csv"));
 
   return 0;
   switch (argc)
