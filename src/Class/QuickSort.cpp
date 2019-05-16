@@ -4,6 +4,7 @@
 #include "../Header/QuickSort.h"
 #include "../Header/Rating.h"
 #include "../Header/Analysis.h"
+#include "../Header/InsertionSort.h"
 
 using namespace std;
 
@@ -45,8 +46,7 @@ int QuickSort::retornaMediana(int low, int high, int k){
 
 
 int QuickSort::partitionMediana(int v[], int low, int high, int mediana){
-    int randomPivot = 0;
-    int pivot = v[randomPivot];
+    int pivot = v[mediana];
 
     int i = 0;
 
@@ -60,6 +60,19 @@ int QuickSort::partitionMediana(int v[], int low, int high, int mediana){
     this->swap(&v[i + 1], &v[high]);
 
     return i + 1;
+
+}
+
+void QuickSort::hybridSort(int v[], int low, int high, int cutter){ //Híbrido quicksort, insertionsort
+
+    if(low < high){
+        if((high - low + 1) > cutter){
+            int rightPos = partition(v, low, high);
+            hybridSort(v, low, rightPos, cutter);
+            hybridSort(v, (rightPos+1), high, cutter);
+        }
+    }
+
 
 }
 
@@ -163,6 +176,31 @@ int QuickSort::partitionRatings(Rating vr[], int low, int high){
     swap(&vr[i+1], &vr[high]);
     return(i+1);
 }
+void QuickSort::sort(int v[], int low, int high){  //Params: Array, lowest index, highest index (n-1)
+    if(low < high){
+        int rightPos = partition(v, low, high);
+        this->sort(v, low, rightPos-1);
+        this->sort(v, rightPos+1, high);
+    }
+}
+
+int QuickSort::partition(int v[], int low, int high){
+    int pivot = v[high];
+    int i = low - 1;
+    for(int j = low; j <= high-1; j++){
+
+        if(v[j] <= pivot){
+            i++;
+            std::swap(v[i], v[j]);
+        }
+
+    }
+    std::swap(v[i+1], v[high]);
+
+    return(i+1);
+
+} 
+
 
 /**
  *
