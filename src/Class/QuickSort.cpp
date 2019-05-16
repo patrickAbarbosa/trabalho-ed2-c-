@@ -48,7 +48,7 @@ int QuickSort::retornaMediana(int low, int high, int k){
 int QuickSort::partitionMediana(int v[], int low, int high, int mediana){
     int pivot = v[mediana];
 
-    int i = 0;
+    int i = low-1;
 
     for(int j = low; j < high; j++){
         if(v[j] < pivot) {
