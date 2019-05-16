@@ -26,7 +26,7 @@ public:
     }
     string toString(){
         ostringstream s;
-        s << "Analysis{ nComparacoes: " << nComparacoes << ", nCopias" << this->nCopias << ", tempoGasto" << tempoGasto << " }";
+        s << "Analysis{ nComparacoes: " << this->nComparacoes << ", nCopias: " << this->nCopias << ", tempoGasto: " << this->tempoGasto << " }";
         return s.str();
     }
     unsigned long long int nComparacoes;
