@@ -9,39 +9,44 @@
 #include "../Header/QuickSort.h"
 
 /**
- *
+ * Como utilizar: CenarioUm::exec(new Data(), new ReadFile("ratings.csv"));
  * @param db
  * @param read
- * @param size
+ * @param N
  */
-void CenarioUm::exec(Data *db, ReadFile* read, int* sizes){
+void CenarioUm::exec(Data *db, ReadFile* read){
+    int vetorN[6] = {1000,5000, 10000,50000,100000,500000};
     for(int i = 0; i < 6; i++) {
-        cout << endl << endl << "--- " << "TESTE " << i+1 << " ---" << endl << "tamanho: " << ;
-        int size = sizes[i];
-        int *vet = read->readUserId(size);
-        Rating *vet1 = read->readUMRT(size);
-        QuickSort q = QuickSort();
-        Analysis analiseVetorInt, analiseVetorRating;
+        for(int j = 0; j < 5; j++) {
+            int N = vetorN[i];
+            cout << endl << endl << endl << "--- " << "Cenário 1 (";
+            cout << j+1 << "/5)" << " --- " << "N = " << N
+                 << endl;
+            int *vet = read->readUserId(N);
+            Rating *vet1 = read->readUMRT(N);
+            QuickSort q = QuickSort();
+            Analysis analiseVetorInt, analiseVetorRating;
 
-        //    cout << "-- Cenario 1 --" << endl;
-        //    cout << "-- Vetor de USERIDs --" << endl;
-        //    printArray(vet, size);
-        //    cout << "-- Vetor de Rating --" << endl;
-        //    printRatingArray(vet1, size);
+            //        cout << endl << "-- Cenario 1 --" << endl;
+            //        cout << "-- Vetor de USERIDs --" << endl;
+            //        printArray(vet, N);
+            //        cout << "-- Vetor de Rating --" << endl;
+            //        printRatingArray(vet1, N);
 
-        analiseVetorInt = q.sort(vet, size);
-        analiseVetorRating = q.sortRatings(vet1, size);
+            analiseVetorInt = q.sort(vet, N);
+            analiseVetorRating = q.sortRatings(vet1, N);
 
-        //    cout << "-- Vetor de USERID (Ordenado) --" << endl;
-        //    printArray(vet, size);
-        //    cout << "-- Vetor de Rating (Ordenado)--" << endl;
-        //    printRatingArray(vet1, size);
-        cout << "-- Analise Vetor de USERID (Ordenado) --" << endl;
-        analiseVetorInt.printAnalysis();
-        cout << "-- Analise Vetor de Rating (Ordenado)--" << endl;
-        analiseVetorRating.printAnalysis();
-
-        delete [] vet;
-        delete [] vet1;
+            //    cout << "-- Vetor de USERID (Ordenado) --" << endl;
+            //    printArray(vet, N);
+            //    cout << "-- Vetor de Rating (Ordenado)--" << endl;
+            //    printRatingArray(vet1, N);
+            cout << "Estatística vetor de USERID" << endl;
+            cout << analiseVetorInt.toString();
+            cout << endl;
+            cout << "Estatística vetor de Rating" << endl;
+            analiseVetorRating.toString();
+            delete[] vet;
+            delete[] vet1;
+        }
     }
 };
