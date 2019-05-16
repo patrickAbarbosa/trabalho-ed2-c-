@@ -15,6 +15,7 @@
 #include "src/Header/Data.h"
 #include "src/Header/QuickSort.h"
 #include "src/Header/Heapsort.h"
+#include "src/Header/CenarioUm.h"
 
 using namespace std;
 
@@ -137,8 +138,9 @@ int main(int argc, char *argv[])
   return 0;
   Rating *b = a.readUMRT(10);
 
-  for(int i = 0; i< 10; i++)
-    b[i].print();
+  // Cenário 1 sendo executado
+  CenarioUm::exec(new Data(), new ReadFile("ratings.csv"));
+
   return 0;
   switch (argc)
   {
