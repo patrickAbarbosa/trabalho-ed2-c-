@@ -4,6 +4,7 @@
 #include "../Header/QuickSort.h"
 #include "../Header/Rating.h"
 #include "../Header/Analysis.h"
+#include "../Header/InsertionSort.h"
 
 using namespace std;
 
@@ -12,11 +13,11 @@ Analysis an;
 /**
  *
  * @param v
- * @param size
+ * @param low
+ * @param high
+ * @param k
  * @return
  */
-
-
 Analysis QuickSort::sortMediana(int v[], int low, int high, int k){
     if(low < high){
         int rightPos = partitionMediana(v, low, high, retornaMediana(low, high, k));
@@ -25,6 +26,13 @@ Analysis QuickSort::sortMediana(int v[], int low, int high, int k){
     }
 }
 
+/**
+ *
+ * @param low
+ * @param high
+ * @param k
+ * @return
+ */
 int QuickSort::retornaMediana(int low, int high, int k){
     int random[k];
 
@@ -43,10 +51,16 @@ int QuickSort::retornaMediana(int low, int high, int k){
     }
 }
 
-
+/**
+ *
+ * @param v
+ * @param low
+ * @param high
+ * @param mediana
+ * @return
+ */
 int QuickSort::partitionMediana(int v[], int low, int high, int mediana){
-    int randomPivot = 0;
-    int pivot = v[randomPivot];
+    int pivot = v[mediana];
 
     int i = 0;
 
@@ -54,16 +68,40 @@ int QuickSort::partitionMediana(int v[], int low, int high, int mediana){
         if(v[j] < pivot) {
             i++;
             this->swap(&v[i], &v[j]);
+            an.nCopias += 3;
         }
     }
 
     this->swap(&v[i + 1], &v[high]);
+    an.nCopias += 3;
 
     return i + 1;
 
 }
 
+/**
+ *
+ * @param v
+ * @param low
+ * @param high
+ * @param cutter
+ */
+void QuickSort::hybridSort(int v[], int low, int high, int cutter){ //Híbrido quicksort, insertionsort
+    if(low < high){
+        if((high - low + 1) > cutter){
+            int rightPos = partition(v, low, high);
+            hybridSort(v, low, rightPos, cutter);
+            hybridSort(v, (rightPos+1), high, cutter);
+        }
+    }
+}
 
+/**
+ *
+ * @param v
+ * @param size
+ * @return
+ */
 Analysis QuickSort::sort(int v[], int size){
     an = Analysis();
     clock_t start, end;
@@ -129,15 +167,18 @@ void QuickSort::sortRatings(Rating vr[], int low, int high){
  */
 int QuickSort::partition(int v[], int low, int high){
     int pivot = v[high];
+    an.nCopias++;
     int i = low - 1;
     for(int j = low; j <= high-1; j++){
+        an.nComparacoes++;
         if(v[j] <= pivot){
-            an.nComparacoes++;
             i++;
-            swap(&v[i], &v[j]);
+            this->swap(&v[i], &v[j]);
+            an.nCopias += 3;
         }
     }
-    swap(&v[i+1], &v[high]);
+    this->swap(&v[i+1], &v[high]);
+    an.nCopias += 3;
     return(i+1);
 }
 
@@ -150,11 +191,11 @@ int QuickSort::partition(int v[], int low, int high){
  */
 int QuickSort::partitionRatings(Rating vr[], int low, int high){
     Rating pivot = vr[high];
+    an.nCopias++;
     int i = low - 1;
     for(int j = low; j <= high-1; j++){
-
+        an.nComparacoes++;
         if(vr[j].USERID <= pivot.USERID){
-            an.nComparacoes++;
             i++;
             swap(&vr[i], &vr[j]);
         }
@@ -174,7 +215,6 @@ void QuickSort::swap(int* left, int* right){
     aux = *right;
     *right = *left;
     *left = aux;
-    an.nCopias += 3;
 }
 
 /**
@@ -187,5 +227,4 @@ void QuickSort::swap(Rating* left, Rating* right){
     aux = *right;
     *right = *left;
     *left = aux;
-    an.nCopias += 3;
 }

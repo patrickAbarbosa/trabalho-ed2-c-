@@ -21,4 +21,5 @@ class QuickSort {
         void swap(int* left, int* right); // Função de troca, inverte a posição dos elementos quando chamada
         void swap(Rating* left, Rating* right);
         int partition(int v[], int low, int high); //Params: vetor de elementos, menor valor do vetor e maior valor (indice)
+        void hybridSort(int v[], int low, int high, int cutter);
 };
