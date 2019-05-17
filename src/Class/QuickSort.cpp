@@ -10,6 +10,17 @@ using namespace std;
 
 Analysis an;
 
+/*
+*
+* Esta classe contém métodos de ordenação utilizando variações do QuickSort
+* QuickSort Recursivo, QuickSort Mediana e a versão hibrida com Insertion Sort
+* Os métodos contam com chamadas recursivas, e com chamadas aos métodos de partição e swap(troca)
+* Também referidos nesta classe
+*
+*/
+
+
+
 /**
  *
  * @param v
@@ -18,7 +29,7 @@ Analysis an;
  * @param k
  * @return
  */
-Analysis QuickSort::sortMediana(int v[], int low, int high, int k){
+Analysis QuickSort::sortMediana(int v[], int low, int high, int k){ //QuickSort Mediana
     if(low < high){
         int rightPos = partitionMediana(v, low, high, retornaMediana(low, high, k));
         sortMediana(v, low, rightPos - 1, k);
@@ -33,7 +44,7 @@ Analysis QuickSort::sortMediana(int v[], int low, int high, int k){
  * @param k
  * @return
  */
-int QuickSort::retornaMediana(int low, int high, int k){
+int QuickSort::retornaMediana(int low, int high, int k){ // Método para calcular e retornar a mediana
     int random[k];
 
     for(int i = 0; i < k; i++){
@@ -41,11 +52,11 @@ int QuickSort::retornaMediana(int low, int high, int k){
     }
     this->sort(random, 0, k);
 
-    if(k % 2 == 0){
+    if(k % 2 == 0){ // Caso par
         return random[(k/2) - 1];
     }else {
         int a = k - 1;
-        int oddIndex = (((a / 2) + 1) + ((a / 2) - 1)) / 2;
+        int oddIndex = (((a / 2) + 1) + ((a / 2) - 1)) / 2; // Caso impar
 
         return random[oddIndex];
     }
@@ -59,7 +70,7 @@ int QuickSort::retornaMediana(int low, int high, int k){
  * @param mediana
  * @return
  */
-int QuickSort::partitionMediana(int v[], int low, int high, int mediana){
+int QuickSort::partitionMediana(int v[], int low, int high, int mediana){ // Método de partição para a variação mediana
     int pivot = v[mediana];
 
     int i = low-1;
@@ -210,7 +221,7 @@ int QuickSort::partitionRatings(Rating vr[], int low, int high){
  * @param left
  * @param right
  */
-void QuickSort::swap(int* left, int* right){
+void QuickSort::swap(int* left, int* right){  //Método para trocar posição de variáveis do tipo inteiro
     int aux;
     aux = *right;
     *right = *left;
@@ -222,7 +233,7 @@ void QuickSort::swap(int* left, int* right){
  * @param left
  * @param right
  */
-void QuickSort::swap(Rating* left, Rating* right){
+void QuickSort::swap(Rating* left, Rating* right){ //Método para trocar posição de variáveis do tipo Rating
     Rating aux;
     aux = *right;
     *right = *left;
