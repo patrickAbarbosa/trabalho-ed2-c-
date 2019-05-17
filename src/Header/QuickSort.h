@@ -1,6 +1,6 @@
 #include <iostream>
-#include "../Header/Rating.h"
-#include "../Header/Analysis.h"
+#include "Rating.h"
+#include "Analysis.h"
 
 using namespace std;
 

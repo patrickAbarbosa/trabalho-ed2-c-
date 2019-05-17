@@ -142,7 +142,14 @@ int main(int argc, char *argv[])
   cenario3(db, &a, 550);
   
   Rating *b = a.readUMRT(10);
-
+  
+  int *vet = a.readUserId(80);
+  cout<<"oi"<<endl;
+  heapSort(vet, 80);
+  cout<<"oi2"<<endl;
+  return 0;
+  for(int i = 0; i< 10; i++)
+    b[i].print();
   return 0;
   switch (argc)
   {
