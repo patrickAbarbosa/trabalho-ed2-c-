@@ -7,43 +7,40 @@
 
 using namespace std;
 
-void heapSort(int vetor[], int n)
+void CriaHeap(int *vet, int ini, int fim)
 {
-    unsigned long long int qtdH = 0;
-    int i = n/2, pai, filho, aux;
-    for(;;)
-    {
-        if(i>0)
-        {
-            i--;
-            aux = vetor[i];
-        }
-        else
-        {
-            n--;
-            if(n==0)
-            {
-                return;
-            }
+   int filho = 2 * ini +1; // calcula o indice do filho
+   int aux = vet[ini]; // aux começa com a posicao inicial de vet
 
-            aux = vetor[n];
-            vetor[n] = vetor[0];
-        }
-        pai = i;
-        filho = i*2+1;
-        while(filho<n)
+   while(filho <= fim ) // Enquanto filho for menor que a ultima poaicao do vetor
+   {
+       if(filho < fim)
+        if(vet[filho]< vet[filho +1]) // Compara se filho da esquerda é menor que filho da direita
+            filho = filho + 1; 
+        if(aux<vet[filho])
         {
-            if( (filho + 1 < n ) && (vetor[filho + 1] > vetor[filho]))
-                filho++;
-            if(vetor[filho] > aux)
-            {
-                vetor[pai] = vetor[filho];
-                pai = filho;
-                filho = pai * 2 +1;
-            }
-            else break;
+            vet[ini] = vet[filho]; // troca de valores 
+            ini = filho; // indice inicial passa a ser o  filho; 
+            filho = 2 * ini + 1; // recalcula o filho 
         }
-        vetor[pai] = aux;
-        qtdH++;
+        else{
+            filho = fim + 1; // sai do loop
+        }
+   }
+   vet[ini] = aux; // vetor[ini] recebe o valor do auxiliar
+}
+
+void heapSort(int *vet, int tam)
+{
+    int i, aux;
+    for(i = (tam-1)/2; i>=0; i--)
+        CriaHeap(vet, i, tam-1);
+    for(i = tam-1; i>=1; i--)
+    {
+        aux = vet[0];
+        vet[0] = vet[i];
+        vet[i] = aux;
+        CriaHeap(vet, 0, i -1);
     }
+}
 }
