@@ -108,7 +108,8 @@ void QuickSort::hybridSort(int v[], int low, int high, int cutter){ //Híbrido q
 }
 
 /**
- *
+ * Chamada que recebe um vetor de inteiros, inicializa a contagem de estatisticas
+ * e as retorna (Objeto do tipo Analysis)
  * @param v
  * @param size
  * @return
@@ -125,7 +126,8 @@ Analysis QuickSort::sort(int v[], int size){
 }
 
 /**
- *
+ * Chamada que recebe um vetor de Ratings, inicializa a contagem de estatisticas
+ * e as retorna (Objeto do tipo Analysis)
  * @param vr
  * @param size
  * @return
