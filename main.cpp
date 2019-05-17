@@ -38,6 +38,14 @@ void cenario2(Data *db, ReadFile *read, int size)
 {
   cout << "-- Cenario 2" << endl;
   int *vet = read->readUserId(size);
+  int v[5] = {5, 2, 3, 4, 1};
+  QuickSort qs = QuickSort();
+
+  qs.sort(v, 0, 4);
+
+  for(int i = 0; i < 5; i++){
+    cout << " " << v[i];
+  }
 
   cout << "Tempo de leitura de user ID: " << endl;
 
@@ -112,7 +120,21 @@ int main(int argc, char *argv[])
 {
   cout << "Estrutura de dados II - parte 1" << endl;
   
-  Data *db;
+  QuickSort qs = QuickSort();
+
+  int v[5] = {5, 3, 4, 2, 1};
+
+  qs.sort(v, 0, 4);
+
+  for(int i = 0; i < 5; i++){
+    cout << " " << v[i];
+  }
+
+  // Cenário 1 sendo executado
+  // int vetorN[6] = {1000,5000, 10000,50000,100000,500000};
+  // CenarioUm::exec(new Data(), new ReadFile("ratings.csv"), vetorN);
+
+  /*Data *db;
   db = new Data();
   ReadFile a("ratings.csv");
   
@@ -121,8 +143,6 @@ int main(int argc, char *argv[])
   
   Rating *b = a.readUMRT(10);
 
-  for(int i = 0; i< 10; i++)
-    b[i].print();
   return 0;
   switch (argc)
   {
@@ -134,5 +154,5 @@ int main(int argc, char *argv[])
     break;
   default:
     break;
-  }
+  }*/
 }
