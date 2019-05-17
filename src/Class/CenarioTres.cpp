@@ -11,67 +11,73 @@
 
 using namespace std;
 
-CenarioTres::CenarioTres(int **vet, int m, int n, int *vetTam)
+CenarioTres::CenarioTres(int **vet, int *vetTam, int vetorN[])
 {
-  this->m =  m;
-  this->n = n;
+  ofstream file;
 
-  cout << "--- Cenario 3 ---" << endl;
-  for(int i = 0; i < m; i++)
+  file.open("saida.txt", ios::binary | ios::ate);
+
+  file << "cenario,numero_comparacoes,numero_copias,tempo_gasto,n,tipo_vetor" << endl;
+  for (int i = 0; i < 6; i++)
   {
-    int *vet2;
-    int **vet3 = &vet2;
-    int ***vet4;
-    vet4 = &vet3;
-    
-    for(int j = 0; j < n; j++)
-      testeK(&vet[i][j], vetTam[i]);
+    Analysis anMediaInt = Analysis(), anMediaRating = Analysis();
+
+    this->m = m;
+    this->n = n;
+
+    cout << "--- Cenario 3 ---" << endl;
+    for (int i = 0; i < 5; i++)
+    {
+      int *vet2;
+      int **vet3 = &vet2;
+      int ***vet4;
+      vet4 = &vet3;
+
+      for (int j = 0; j < n; j++)
+        testeK(&vet[i][j], vetTam[i]);
+    }
   }
 }
-
-CenarioTres::~CenarioTres(){}
+CenarioTres::~CenarioTres() {}
 
 void CenarioTres::testeK(int *vetor, int size)
 {
   cout << "Tamanho do vetor: " << size << endl;
-  
+
   int *vetInsertionSort = new int[size];
-  
-  for(int i = 0; i < size; i++)
+
+  for (int i = 0; i < size; i++)
     vetInsertionSort[i] = vetor[i];
 
   InsertionSort insertion;
   insertion.sort(vetInsertionSort, size);
-  delete [] vetInsertionSort;
+  delete[] vetInsertionSort;
 
-  int *vetMergeSort= new int[size];
-  
-  for(int i = 0; i < size; i++)
+  int *vetMergeSort = new int[size];
+
+  for (int i = 0; i < size; i++)
     vetMergeSort[i] = vetor[i];
-   
+
   MergeSort merge;
   merge.sort(vetMergeSort, size);
-  delete [] vetMergeSort;
+  delete[] vetMergeSort;
 
-  int *vetHeapSort= new int[size];
-  
-  for(int i = 0; i < size; i++)
+  int *vetHeapSort = new int[size];
+
+  for (int i = 0; i < size; i++)
     vetHeapSort[i] = vetor[i];
 
   heapSort(vetHeapSort, size);
-  delete [] vetHeapSort;
+  delete[] vetHeapSort;
 
-  int *vetCombSort= new int[size];
+  int *vetCombSort = new int[size];
 
-  for(int i = 0; i < size; i++)
+  for (int i = 0; i < size; i++)
     vetCombSort[i] = vetor[i];
 
   CombSort comb;
   comb.combSort(vetCombSort, size);
-  delete [] vetCombSort;
+  delete[] vetCombSort;
 }
 
-CenarioTres::~CenarioTres(){}
-
-
-
+CenarioTres::~CenarioTres() {}

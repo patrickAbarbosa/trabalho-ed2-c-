@@ -4,6 +4,7 @@
 
 Analysis combSort(int vet[], int n)
 {
+  Analysis an;
   clock_t start = clock();  
  
   int indiceA = 0;
@@ -12,8 +13,13 @@ Analysis combSort(int vet[], int n)
     while((indiceA + gap) < n)
     {
       int indiceB = gap;
+      an.nCopias++;
+      an.nComparacoes++;
       if (vet[indiceA] > vet[indiceB])
+      {
         swap(&vet[indiceA], &vet[indiceB]);
+        an.nCopias += 3;
+      }
       indiceA++;
     }
     gap = (gap/1.3);
@@ -21,5 +27,7 @@ Analysis combSort(int vet[], int n)
   }
   clock_t end = clock();
   float tempoGasto = ((float)end - start)/CLOCKS_PER_SEC;
-    
+  an.tempoGasto = tempoGasto;
+
+  return an;   
 }

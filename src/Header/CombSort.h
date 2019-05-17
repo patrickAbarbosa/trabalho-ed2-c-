@@ -8,9 +8,10 @@ class CombSort {
     CombSort();
     ~CombSort();
 
-    Analysis combSort(int vet[], int n); 
+    Analysis* combSort(int vet[], int n); 
 
   private:
     void swap(int *a, int *b);
+    Analysis *an; 
 };
 #endif //combSort

@@ -7,7 +7,7 @@
 class CenarioTres
 {
 public:
-  CenarioTres(int **vet, int m, int n, int *vetTam);
+  CenarioTres(int **vet, int *vetTam, int vetorN[]);
   ~CenarioTres();
 
 private:
