@@ -8,5 +8,7 @@ class InsertionSort {
 
     public:
         void sort(int v[], int n);
+        InsertionSort();
+        ~InsertionSort();
 
 };
