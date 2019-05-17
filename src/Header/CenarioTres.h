@@ -4,10 +4,20 @@
 #include "./Data.h"
 #include "./ReadFile.h"
 
-class CenarioTres {
-  public:
-    CenarioTres();
-};
+class CenarioTres
+{
+public:
+  CenarioTres(int **vet, int m, int n, int *vetTam);
+  ~CenarioTres();
 
+private:
+  int **vet;
+  int m;
+  int n;
+  
+  ReadFile *file;
+
+  void testeK(int *vetor, int n);
+};
 
 #endif //EndCenarioTres

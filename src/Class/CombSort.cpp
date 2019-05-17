@@ -1,8 +1,11 @@
 #include "../Header/CombSort.h"
 #include "../Header/Swap.h"
+#include "../Header/Analysis.h"
 
-void combSort(int vet[], int n)
+Analysis combSort(int vet[], int n)
 {
+  clock_t start = clock();  
+ 
   int indiceA = 0;
   for (int gap = (n/1.3); gap > 0 && indiceA != n - 1;)
   {     
@@ -16,4 +19,7 @@ void combSort(int vet[], int n)
     gap = (gap/1.3);
     indiceA = 0;
   }
+  clock_t end = clock();
+  float tempoGasto = ((float)end - start)/CLOCKS_PER_SEC;
+    
 }

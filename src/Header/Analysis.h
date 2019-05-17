@@ -29,9 +29,13 @@ public:
         s << "Analysis{ nComparacoes: " << nComparacoes << ", nCopias" << this->nCopias << ", tempoGasto" << tempoGasto << " }";
         return s.str();
     }
-    unsigned long long int nComparacoes;
-    unsigned long long int nCopias;
+    long long unsigned int nComparacoes;
+    long long unsigned int nCopias;
     float tempoGasto;
+    
+    string cenario;
+    Analysis *prox;
+    int teste;
 };
 
 

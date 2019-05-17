@@ -15,6 +15,7 @@
 #include "src/Header/Data.h"
 #include "src/Header/QuickSort.h"
 #include "src/Header/Heapsort.h"
+#include "src/Header/CenarioUm.h"
 
 using namespace std;
 
@@ -115,8 +116,9 @@ int main(int argc, char *argv[])
   db = new Data();
   ReadFile a("ratings.csv");
   
-  cenario3(db, &a, 550);
   return 0;
+  cenario3(db, &a, 550);
+  
   Rating *b = a.readUMRT(10);
 
   for(int i = 0; i< 10; i++)

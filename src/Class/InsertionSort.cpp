@@ -3,6 +3,10 @@
 
 using namespace std;
 
+InsertionSort::InsertionSort(){}
+
+InsertionSort::~InsertionSort(){}
+
 void InsertionSort::sort(int v[], int n){
 
     int i, j;
