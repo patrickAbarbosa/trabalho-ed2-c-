@@ -22,14 +22,14 @@ Analysis an;
 
 
 /**
- *
+ * QuickSort Mediana
  * @param v
  * @param low
  * @param high
  * @param k
  * @return
  */
-Analysis QuickSort::sortMediana(int v[], int low, int high, int k){ //QuickSort Mediana
+Analysis QuickSort::sortMediana(int v[], int low, int high, int k){
     if(low < high){
         int rightPos = partitionMediana(v, low, high, retornaMediana(low, high, k));
         sortMediana(v, low, rightPos - 1, k);
@@ -38,13 +38,13 @@ Analysis QuickSort::sortMediana(int v[], int low, int high, int k){ //QuickSort 
 }
 
 /**
- *
+ * Método para calcular e retornar a mediana
  * @param low
  * @param high
  * @param k
  * @return
  */
-int QuickSort::retornaMediana(int low, int high, int k){ // Método para calcular e retornar a mediana
+int QuickSort::retornaMediana(int low, int high, int k){
     int random[k];
 
     for(int i = 0; i < k; i++){
@@ -63,14 +63,14 @@ int QuickSort::retornaMediana(int low, int high, int k){ // Método para calcula
 }
 
 /**
- *
+ * Método de partição para a variação mediana
  * @param v
  * @param low
  * @param high
  * @param mediana
  * @return
  */
-int QuickSort::partitionMediana(int v[], int low, int high, int mediana){ // Método de partição para a variação mediana
+int QuickSort::partitionMediana(int v[], int low, int high, int mediana){
     int pivot = v[mediana];
 
     int i = low-1;
@@ -91,13 +91,13 @@ int QuickSort::partitionMediana(int v[], int low, int high, int mediana){ // Mé
 }
 
 /**
- *
+ * Híbrido quicksort, insertionsort
  * @param v
  * @param low
  * @param high
  * @param cutter
  */
-void QuickSort::hybridSort(int v[], int low, int high, int cutter){ //Híbrido quicksort, insertionsort
+void QuickSort::hybridSort(int v[], int low, int high, int cutter){
     if(low < high){
         if((high - low + 1) > cutter){
             int rightPos = partition(v, low, high);
@@ -144,7 +144,7 @@ Analysis QuickSort::sortRatings(Rating vr[], int size){
 }
 
 /**
- *
+ * Função que inicia a chamada recursiva da ordenação de vetor de ints
  * @param v
  * @param low
  * @param high
@@ -158,7 +158,7 @@ void QuickSort::sort(int v[], int low, int high){  //Params: Array, lowest index
 }
 
 /**
- *
+ * Função que inicia a chamada recursiva da ordenação de vetor de Ratings
  * @param vr
  * @param low
  * @param high
@@ -172,7 +172,7 @@ void QuickSort::sortRatings(Rating vr[], int low, int high){
 }
 
 /**
- *
+ * Método de partição e troca de posição
  * @param v
  * @param low
  * @param high
@@ -196,7 +196,7 @@ int QuickSort::partition(int v[], int low, int high){
 }
 
 /**
- *
+ * Método de partição e troca de posição
  * @param vr
  * @param low
  * @param high
@@ -219,7 +219,8 @@ int QuickSort::partitionRatings(Rating vr[], int low, int high){
 }
 
 /**
- *
+ * Metodo que aplica um swap (troca de posições) entre
+ * dois itens de um vetor de inteiros
  * @param left
  * @param right
  */
@@ -231,7 +232,8 @@ void QuickSort::swap(int* left, int* right){  //Método para trocar posição de
 }
 
 /**
- *
+ * Metodo que aplica um swap (troca de posições) entre
+ * dois itens de um vetor de Ratings
  * @param left
  * @param right
  */

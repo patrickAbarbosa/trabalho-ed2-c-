@@ -11,6 +11,10 @@
 
 /**
  * Como utilizar: CenarioUm::exec(new Data(), new ReadFile("ratings.csv"));
+ * Função que recebe o leitor de arquivo (ReadFile) e inicia a chamada do procedimento
+ * do cenário um.
+ * Consiste em ler os dados do arquivo ratings.csv, executar o algoritmo quick sort para os casos
+ * determinados: Vetor de ratings e vetor de ints
  * @param db
  * @param read
  * @param N

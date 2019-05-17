@@ -22,7 +22,6 @@ using namespace std;
 void MergeSort::divide(int arr[], int left, int right){
     if (right > left){
         int middle = left+(right-left)/2; // (left + right) / 2 ???
-//        cout << "left: " << left << " (" << arr[left] << ")" << "| middle: " << middle << " (" << arr[left] << ")"  << "| right: " << right << " (" << arr[right] << ")"  << endl;
         this->divide(arr, left, middle);
         this->divide(arr, middle+1, right);
         this->merge(arr, left, middle, right);
@@ -82,7 +81,10 @@ void MergeSort::arrCopy(int *arr, int *arr1, int start, int size){
 }
 
 /**
- *
+ * Função que recebe o vetor de inteiros a serem ordenados
+ * e o tamanho do mesmo
+ * Para que possa efetuar a chamada da função recursiva divide
+ * que irá dar continuidade ao procedimento de sort
  * @param arr
  * @param size
  */
